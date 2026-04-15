@@ -61,8 +61,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 03-01-PLAN.md — Section 3 mental model slides (agent architecture, waves, .planning/ directory)
-- [ ] 03-02-PLAN.md — Section 5 full lifecycle slides (workflow, artifacts, memory, verification) + visual verification
+- [x] 03-01-PLAN.md — Section 3 mental model slides (agent architecture, waves, .planning/ directory)
+- [x] 03-02-PLAN.md — Section 5 full lifecycle slides (workflow, artifacts, memory, verification) + visual verification
 
 ### Phase 4: Scenarios & Best Practices
 **Goal**: Audience can map their real-world situations to specific GSD commands, with clear guidance on mindset shifts, prompt crafting, anti-patterns, and a concrete next step to take Monday morning
