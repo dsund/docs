@@ -304,6 +304,160 @@ Eller refaktorera ett auth-system?
 
 ---
 
+## Fem steg — från idé till verifierat resultat
+
+```
+  /gsd-new-project
+       │
+       ▼
+  ┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐
+  │ Discuss  │──▶│  Plan   │──▶│ Execute │──▶│ Verify  │
+  │ Beslut   │   │Research │   │  Waves  │   │ Mål ≠   │
+  │ & val    │   │ + plan  │   │  + code │   │ tasks   │
+  └─────────┘   └─────────┘   └─────────┘   └─────────┘
+       │              │              │              │
+  CONTEXT.md    PLAN.md +      SUMMARY.md    VERIFICATION.md
+                RESEARCH.md
+```
+
+Varje steg producerar artifacts → nästa steg läser dem.
+
+---
+
+## `/gsd-new-project` — det börjar här
+
+```bash
+$ /gsd-new-project
+Vad vill du bygga? > En REST API för kundhantering
+...
+Requirements defined: 12 items
+Roadmap: 5 phases created
+Ready: /gsd-plan-phase 1
+```
+
+Djup-intervju → research → requirements → roadmap.
+Allt sparas i `.planning/` — redo för nästa steg.
+
+---
+
+## Artifacts — vad som faktiskt sparas
+
+```markdown
+## Phases
+
+- [x] Phase 1: Foundation
+- [ ] **Phase 2: Auth** ← du är här
+- [ ] Phase 3: API endpoints
+
+### Phase 2: Auth
+**Goal**: Användare kan logga in
+**Success Criteria:**
+  1. Login-formulär validerar credentials
+  2. JWT-tokens utfärdas vid lyckad inloggning
+  3. Skyddade routes avvisar oautentiserade requests
+```
+
+Inte TODO-listor — *success criteria* som kan verifieras.
+
+---
+
+## Composable flags — anpassa assistansnivån
+
+Kom ihåg `/gsd-quick` från förra sektionen?
+
+| Flag | Lägger till | När |
+|------|-------------|-----|
+| `--discuss` | Diskussion före planning | "Jag vet inte alla detaljer" |
+| `--research` | Research-agent undersöker | "Jag vet inte bästa sättet" |
+| `--full` | Plan-checking + verification | "Det här måste bli rätt" |
+
+Kombinera fritt: `/gsd-quick --discuss --research --full`
+
+---
+
+## GSD glömmer aldrig
+
+```markdown
+## Current Position
+
+Phase: 2 of 5
+Plan: 1 of 2
+Status: Executing
+
+Progress: [████░░░░░░] 35%
+
+## Session Continuity
+
+Stopped at: JWT middleware implementation
+Resume: /gsd-resume-work
+```
+
+*3 dagar senare...*
+
+```bash
+$ /gsd-resume-work
+📍 Phase 2: Auth System — Plan 1, Task 3
+   Stopped at: JWT middleware
+   Kvar: 2 tasks i Plan 1, sedan Plan 2
+```
+
+---
+
+## Hela projektets livscykel
+
+**Starta:** `/gsd-new-project` — skapar allt från scratch
+
+**Pausa & återuppta:** `/gsd-pause-work` → `/gsd-resume-work`
+
+**Kolla status:** `/gsd-progress` — var står projektet?
+
+**Städa upp:** `/gsd-cleanup` — arkivera klara phases
+
+**Byt projekt:** Workspaces isolerar olika projekt
+
+---
+
+## Task completion ≠ Goal achievement
+
+**Task-checking (farligt):**
+
+```
+✅ LoginComponent.tsx skapad
+✅ jwt-utils.ts skapad
+✅ RouteGuard.tsx skapad
+────────────────────────
+3/3 tasks klara! 🎉
+```
+
+**Goal-backward (GSD):**
+
+```
+Goal: "Användare kan logga in"
+  ✅ Exists: Alla filer finns
+  ❌ Substantive: LoginComponent returnerar <div/>
+  ❌ Wired: RouteGuard importeras inte
+  ❌ Functional: Inloggning fungerar inte
+────────────────────────
+Tasks klara — men målet INTE uppnått.
+```
+
+---
+
+## Goal-backward verification
+
+GSD frågar tre saker:
+
+1. Vad måste vara **SANT** för att målet ska vara uppnått?
+2. Vad måste **FINNAS** för att det ska vara sant?
+3. Vad måste vara **KOPPLAT** för att det ska fungera?
+
+Sedan verifierar den i fyra nivåer:
+**Exists** → **Substantive** → **Wired** → **Functional**
+
+> Inte "är koden skriven?" utan "fungerar det för användaren?"
+
+---
+
 <!-- _class: divider -->
 <!-- _paginate: skip -->
 
