@@ -12,11 +12,12 @@ Utvecklare i teamet ska förstå **hur** man använder GSD i sin vardag — frå
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Slide-deck i Marp-format (~45 min presentation) — Validated in Phase 1: Foundation & Setup (skeleton)
+- [x] Språkpolicy: svenska med engelska termer — Validated in Phase 1: Foundation & Setup (TERMINOLOGY.md)
 
 ### Active
 
-- [ ] Slide-deck i Marp-format (~45 min presentation)
+- [ ] Slide-deck i Marp-format (~45 min presentation) — content to be added in Phases 2–5
 - [ ] Markdown-dokument med fullständigt innehåll (wiki/repo-vänligt)
 - [ ] Introduktion: varför AI agent frameworks — problemet de löser
 - [ ] Kort jämförelse: GSD vs BMAD vs andra frameworks
@@ -25,7 +26,7 @@ Utvecklare i teamet ska förstå **hur** man använder GSD i sin vardag — frå
 - [ ] Full workflow: new-project → plan → execute lifecycle
 - [ ] Scenarion: greenfield, brownfield, debugging, quick fixes
 - [ ] Best practices: hur man tänker och promptar för bästa resultat
-- [ ] Språkpolicy: svenska med engelska termer (phases, roadmap, agents etc.)
+- [ ] Språkpolicy: svenska med engelska termer (phases, roadmap, agents etc.) — policy established, applied in Phases 2–6
 
 ### Out of Scope
 
@@ -78,4 +79,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-15 after initialization*
+*Last updated: 2026-04-15 after Phase 1 completion*
