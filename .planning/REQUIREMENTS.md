@@ -90,46 +90,46 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SLIDE-01 | TBD | Pending |
-| SLIDE-02 | TBD | Pending |
-| SLIDE-03 | TBD | Pending |
-| SLIDE-04 | TBD | Pending |
-| SLIDE-05 | TBD | Pending |
-| CTXT-01 | TBD | Pending |
-| CTXT-02 | TBD | Pending |
-| CTXT-03 | TBD | Pending |
-| CTXT-04 | TBD | Pending |
-| DEEP-01 | TBD | Pending |
-| DEEP-02 | TBD | Pending |
-| DEEP-03 | TBD | Pending |
-| DEEP-04 | TBD | Pending |
-| DEEP-05 | TBD | Pending |
-| DEEP-06 | TBD | Pending |
-| PRAC-01 | TBD | Pending |
-| PRAC-02 | TBD | Pending |
-| PRAC-03 | TBD | Pending |
-| PRAC-04 | TBD | Pending |
-| PRAC-05 | TBD | Pending |
-| PRAC-06 | TBD | Pending |
-| PRAC-07 | TBD | Pending |
-| PRAC-08 | TBD | Pending |
-| BEST-01 | TBD | Pending |
-| BEST-02 | TBD | Pending |
-| BEST-03 | TBD | Pending |
-| BEST-04 | TBD | Pending |
-| BEST-05 | TBD | Pending |
-| SCEN-01 | TBD | Pending |
-| SCEN-02 | TBD | Pending |
-| SCEN-03 | TBD | Pending |
-| SCEN-04 | TBD | Pending |
-| COMP-01 | TBD | Pending |
-| COMP-02 | TBD | Pending |
-| COMP-03 | TBD | Pending |
+| SLIDE-01 | Phase 1 | Pending |
+| SLIDE-02 | Phase 5 | Pending |
+| SLIDE-03 | Phase 2 | Pending |
+| SLIDE-04 | Phase 2 | Pending |
+| SLIDE-05 | Phase 1 | Pending |
+| CTXT-01 | Phase 5 | Pending |
+| CTXT-02 | Phase 5 | Pending |
+| CTXT-03 | Phase 5 | Pending |
+| CTXT-04 | Phase 5 | Pending |
+| DEEP-01 | Phase 3 | Pending |
+| DEEP-02 | Phase 3 | Pending |
+| DEEP-03 | Phase 3 | Pending |
+| DEEP-04 | Phase 3 | Pending |
+| DEEP-05 | Phase 3 | Pending |
+| DEEP-06 | Phase 3 | Pending |
+| PRAC-01 | Phase 2 | Pending |
+| PRAC-02 | Phase 2 | Pending |
+| PRAC-03 | Phase 2 | Pending |
+| PRAC-04 | Phase 4 | Pending |
+| PRAC-05 | Phase 6 | Pending |
+| PRAC-06 | Phase 6 | Pending |
+| PRAC-07 | Phase 6 | Pending |
+| PRAC-08 | Phase 3 | Pending |
+| BEST-01 | Phase 4 | Pending |
+| BEST-02 | Phase 4 | Pending |
+| BEST-03 | Phase 4 | Pending |
+| BEST-04 | Phase 4 | Pending |
+| BEST-05 | Phase 4 | Pending |
+| SCEN-01 | Phase 4 | Pending |
+| SCEN-02 | Phase 4 | Pending |
+| SCEN-03 | Phase 4 | Pending |
+| SCEN-04 | Phase 4 | Pending |
+| COMP-01 | Phase 6 | Pending |
+| COMP-02 | Phase 6 | Pending |
+| COMP-03 | Phase 6 | Pending |
 
 **Coverage:**
 - v1 requirements: 35 total
-- Mapped to phases: 0
-- Unmapped: 35 ⚠️
+- Mapped to phases: 35 ✓
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-15*
