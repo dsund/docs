@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 1 plan
 
 Plans:
-- [ ] 01-01-PLAN.md — Project skeleton: Marp slide deck, terminology reference, companion outline
+- [x] 01-01-PLAN.md — Project skeleton: Marp slide deck, terminology reference, companion outline
 
 ### Phase 2: Core Payload — On-Ramp
 **Goal**: Audience can see exactly how to start using GSD with zero-friction entry points and understand the graduated complexity path from simple to full workflow
