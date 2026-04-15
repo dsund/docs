@@ -29,7 +29,10 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. A Marp-compatible slide deck file exists with correct front matter, inline CSS styling, and section divider templates ready for content
   2. A Swedish/English terminology reference list exists defining which GSD terms stay in English (phases, roadmap, agents, etc.)
   3. The companion document has a structured outline with section placeholders matching the presentation arc
-**Plans**: TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] 01-01-PLAN.md — Project skeleton: Marp slide deck, terminology reference, companion outline
 
 ### Phase 2: Core Payload — On-Ramp
 **Goal**: Audience can see exactly how to start using GSD with zero-friction entry points and understand the graduated complexity path from simple to full workflow
@@ -96,7 +99,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Setup | 0/0 | Not started | - |
+| 1. Foundation & Setup | 0/1 | Not started | - |
 | 2. Core Payload — On-Ramp | 0/0 | Not started | - |
 | 3. Core Payload — Full Workflow | 0/0 | Not started | - |
 | 4. Scenarios & Best Practices | 0/0 | Not started | - |
