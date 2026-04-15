@@ -46,7 +46,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 02-01-PLAN.md — Section 4 slides: command spectrum, terminal examples, installation, gateway bridge
+- [x] 02-01-PLAN.md — Section 4 slides: command spectrum, terminal examples, installation, gateway bridge
 
 ### Phase 3: Core Payload — Full Workflow
 **Goal**: Audience understands the complete GSD lifecycle from project initialization through verification, including how GSD maintains project memory across sessions
