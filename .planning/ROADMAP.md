@@ -43,7 +43,10 @@ Plans:
   2. Realistic terminal examples show actual command invocations with plausible output for at least `/gsd-fast` and `/gsd-quick` scenarios
   3. Getting started content covers installation and running a first command with near-zero setup overhead
   4. The graduated complexity narrative makes a convincing case that you can start light today and scale up as trust grows
-**Plans**: TBD
+**Plans:** 1 plan
+
+Plans:
+- [ ] 02-01-PLAN.md — Section 4 slides: command spectrum, terminal examples, installation, gateway bridge
 
 ### Phase 3: Core Payload — Full Workflow
 **Goal**: Audience understands the complete GSD lifecycle from project initialization through verification, including how GSD maintains project memory across sessions
