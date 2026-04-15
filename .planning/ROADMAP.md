@@ -58,7 +58,11 @@ Plans:
   3. Planning artifacts (`.planning/` directory, ROADMAP.md, STATE.md) are shown with realistic simplified examples that feel authentic
   4. Persistent project memory (STATE.md, `/gsd-resume-work`, `/gsd-progress`) and project lifecycle management (starting, switching, cleaning up projects) are explained as key differentiators
   5. Goal-backward verification ("task completion ≠ goal achievement") is clearly distinguished from simple task checking
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Section 3 mental model slides (agent architecture, waves, .planning/ directory)
+- [ ] 03-02-PLAN.md — Section 5 full lifecycle slides (workflow, artifacts, memory, verification) + visual verification
 
 ### Phase 4: Scenarios & Best Practices
 **Goal**: Audience can map their real-world situations to specific GSD commands, with clear guidance on mindset shifts, prompt crafting, anti-patterns, and a concrete next step to take Monday morning
