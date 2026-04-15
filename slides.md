@@ -86,6 +86,81 @@ code {
 
 ---
 
+## GSD — tre byggstenar
+
+**Orchestrator** — koordinerar, bygger aldrig själv
+
+**Specialiserade agents** — var och en expert på sin roll
+
+**Persistent memory** — `.planning/` sparar allt mellan sessioner
+
+> En AI som minns var du var, vad du bestämde, och vad som är kvar.
+
+---
+
+## 18 agents, 4 roller
+
+```
+  ┌─────────────────────────────────────────┐
+  │            ORCHESTRATOR                  │
+  │     Koordinerar — bygger aldrig själv    │
+  └────┬──────┬──────────┬──────────┬───────┘
+       │      │          │          │
+       ▼      ▼          ▼          ▼
+  ┌────────┐ ┌────────┐ ┌────────┐ ┌────────┐
+  │Research│ │Planning│ │Execute │ │Verify  │
+  │  (4)   │ │  (4)   │ │  (1)   │ │  (3)   │
+  └────────┘ └────────┘ └────────┘ └────────┘
+  Undersöker  Skapar     Bygger    Kontrollerar
+  domänen     planer     koden     kvalitet
+```
+
+\+ 6 specialister: debugger, codebase-mapper, UI-team m.fl.
+
+---
+
+## Wave-baserad execution
+
+```
+  Phase 2: Auth System
+  ────────────────────
+
+  Wave 1    [Plan A: Models]  [Plan B: Utils]
+            ────────────────  ───────────────
+                    ↓ klart
+
+  Wave 2    [Plan C: Routes + middleware]
+            ─────────────────────────────
+                    ↓ klart
+
+  Verify    Goal-backward: "Kan en användare logga in?"
+```
+
+Plans inom samma wave körs parallellt. Waves körs i ordning.
+
+---
+
+## `.planning/` — projektets minne
+
+```
+.planning/
+├── PROJECT.md        ← Vad vi bygger
+├── REQUIREMENTS.md   ← Krav + spårbarhet
+├── ROADMAP.md        ← Phaser + success criteria
+├── STATE.md          ← Var vi är just nu
+└── phases/
+    ├── 01-foundation/
+    │   ├── 01-CONTEXT.md    ← Beslut
+    │   ├── 01-PLAN.md       ← Plan
+    │   └── 01-SUMMARY.md    ← Resultat
+    └── 02-auth-system/
+        └── ...
+```
+
+Varje phase producerar artifacts. Inget försvinner.
+
+---
+
 <!-- _class: divider -->
 <!-- _paginate: skip -->
 
