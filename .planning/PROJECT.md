@@ -14,19 +14,19 @@ Utvecklare i teamet ska förstå **hur** man använder GSD i sin vardag — frå
 
 - [x] Slide-deck i Marp-format (~45 min presentation) — Validated in Phase 1: Foundation & Setup (skeleton)
 - [x] Språkpolicy: svenska med engelska termer — Validated in Phase 1: Foundation & Setup (TERMINOLOGY.md)
+- [x] On-ramp: hur man börjar light (`/gsd-quick`, `/gsd-fast`, `/gsd-do`) — Validated in Phase 2: Core Payload — On-Ramp
 
 ### Active
 
-- [ ] Slide-deck i Marp-format (~45 min presentation) — content to be added in Phases 2–5
+- [ ] Slide-deck i Marp-format (~45 min presentation) — content to be added in Phases 3–5
 - [ ] Markdown-dokument med fullständigt innehåll (wiki/repo-vänligt)
 - [ ] Introduktion: varför AI agent frameworks — problemet de löser
 - [ ] Kort jämförelse: GSD vs BMAD vs andra frameworks
 - [ ] GSD deep-dive: arkitektur, workflow, nyckelkoncept
-- [ ] On-ramp: hur man börjar light (`/gsd-quick`, `/gsd-fast`, `/gsd-do`)
 - [ ] Full workflow: new-project → plan → execute lifecycle
 - [ ] Scenarion: greenfield, brownfield, debugging, quick fixes
 - [ ] Best practices: hur man tänker och promptar för bästa resultat
-- [ ] Språkpolicy: svenska med engelska termer (phases, roadmap, agents etc.) — policy established, applied in Phases 2–6
+- [ ] Språkpolicy: svenska med engelska termer (phases, roadmap, agents etc.) — policy established, applied in Phases 3–6
 
 ### Out of Scope
 
