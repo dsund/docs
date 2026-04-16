@@ -572,6 +572,78 @@ Nästa steg: mindset shifts och best practices.
 
 ---
 
+## Tänk outcomes, inte steg
+
+❌ **Steg-för-steg:**
+> "Create a file called AuthService.ts, add a login method that accepts email and password, hash with bcrypt, create a JWT token..."
+
+✅ **Outcome:**
+> "Användare ska kunna logga in med email och lösenord"
+
+GSD härleder stegen från målet. Du definierar vad som är klart — inte hur.
+
+---
+
+## Du bestämmer, AI utför
+
+**Du:**
+- Vad ska byggas
+- Arkitekturbeslut
+- Kvalitetskrav
+
+**AI:**
+- Research och analys
+- Planering och implementation
+- Verification execution
+
+Utvecklaren blir arkitekt och reviewer — inte typist.
+
+---
+
+## Prompt crafting — var specifik
+
+❌ `"Fix the bug"`
+✅ `"The login form returns 401 when valid credentials are submitted"`
+
+❌ `"Add a button"`
+✅ `"Users should be able to export their data as CSV from the settings page"`
+
+❌ `"Refactor this"`
+✅ `"Refactor the auth module — it mixes JWT creation, validation, and user lookup in one file"`
+
+Kontext + mål + constraints = bättre resultat.
+
+---
+
+## Tre vanliga misstag
+
+**🚫 Vaga prompts** — agenten gissar fel, du gör om arbetet
+→ Var specifik: mål + kontext + constraints
+
+**🚫 Skippa verification** — "3/3 tasks done!" men inget fungerar
+→ Kör alltid verification — task completion ≠ goal achievement
+
+**🚫 Micro-management** — du dikterar varje fil och rad
+→ Beskriv outcome, låt GSD planera vägen dit
+
+---
+
+## När du INTE ska använda agents
+
+🚫 **Arkitekturbeslut** — agenten optimerar lokalt, du optimerar globalt
+
+🚫 **Security-kritisk kod** — alltid manuell review oavsett
+
+🚫 **Teamets lärande** — om syftet är att lära, inte leverera
+
+🚫 **Regelverk & compliance** — agenten förstår inte juridiskt ansvar
+
+🚫 **Det du inte kan reviewera** — delegera inte det du inte kan bedöma
+
+> GSD gör dig effektivare — men det är fortfarande du som är ansvarig.
+
+---
+
 <!-- _class: divider -->
 <!-- _paginate: skip -->
 
@@ -580,3 +652,32 @@ Nästa steg: mindset shifts och best practices.
 <hr>
 
 <!-- Section 8: Getting Started — slides added by Phase 4 -->
+
+---
+
+## Din challenge
+
+**Måndag morgon:**
+
+```bash
+$ npx get-shit-done-cc@latest
+$ /gsd-fast "fix a real typo in your codebase"
+```
+
+**Redo för mer?**
+
+| Tid | Utmaning | Kommando |
+|-----|----------|----------|
+| 5 min | Fixa en riktig typo | `/gsd-fast` |
+| 30 min | Lägg till en feature | `/gsd-quick` |
+| 2 timmar | Nytt sidoprojekt | `/gsd-new-project` |
+
+---
+
+## Tack
+
+Från "vad är det här?" till "jag vet exakt vilket kommando jag ska använda."
+
+Beslutträdet ni fotograferade + installkommandot ni kör på måndag.
+
+Frågor?
