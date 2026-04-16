@@ -79,4 +79,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-15 after Phase 3 completion*
+*Last updated: 2026-04-16 after Phase 5 completion — Framing intro & landscape slides added (Sections 1 & 2)*
