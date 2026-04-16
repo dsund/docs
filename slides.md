@@ -64,6 +64,43 @@ code {
 
 ---
 
+## Känner du igen det här?
+
+"Jag har förklarat arkitekturen tre gånger — i tre olika chattar."
+
+- Ny chat = ny kontext. Varje gång.
+- AI:n glömmer beslut du tog igår
+- Ingen verification — "3 filer skapade!" men fungerar det?
+- Copy-paste av samma prompt, om och om igen
+
+> Ju större uppgiften, desto mer faller isär.
+
+---
+
+## Det som saknas
+
+Verktygen är inte problemet — det som saknas är **struktur runt dem.**
+
+- **Kontext** — varje session börjar från noll. Beslut, arkitektur, progress — borta.
+- **Struktur** — ingen plan, ingen ordning. AI:n gör sitt bästa men tappar tråden.
+- **Kvalitet** — "tasks klara!" men ingen kollar om målet faktiskt är uppnått.
+
+> Verktygen är kraftfulla. Det som saknas är ett system.
+
+---
+
+## Nästa steg i en bekant resa
+
+```
+Manuellt → IDE → Linter → CI → AI-assistent
+```
+
+Varje steg automatiserade det tråkiga och lät utvecklaren fokusera på det som spelar roll. AI-assistenter är nästa steg — inte en ersättning, utan en **arbetsfördelning.**
+
+> Det finns ett namn för det här: agent frameworks.
+
+---
+
 <!-- _class: divider -->
 <!-- _paginate: skip -->
 
