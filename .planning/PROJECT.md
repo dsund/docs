@@ -2,31 +2,39 @@
 
 ## What This Is
 
-En 45-minuters utbildningspresentation riktad till utvecklare om hur man arbetar effektivt med AI agent frameworks — med fokus på GSD (Get Shit Done). Materialet levereras som ett markdown-dokument (wiki/repo) samt en Marp slide-deck, båda skrivna på svenska med engelska facktermer bibehållna.
+En utbildningspresentation (~60 min) och ett companion-dokument riktade till utvecklare om hur man arbetar effektivt med AI agent frameworks — med fokus på GSD (Get Shit Done). Materialet levereras som en Marp slide-deck (755 rader, 8 sektioner) och ett standalone markdown-dokument (821 rader, 7 sektioner + appendix), båda skrivna på svenska med engelska facktermer.
 
 ## Core Value
 
 Utvecklare i teamet ska förstå **hur** man använder GSD i sin vardag — från lättviktiga one-off tasks till fullskaliga projekt — och kunna börja direkt efter presentationen.
 
+## Current State
+
+Shipped v1.0 — all deliverables complete.
+- **slides.md**: 755 lines, 8 sections, ~35 content slides, Marp-compatible
+- **companion.md**: 821 lines, 7 sections + appendix, standalone-readable
+- **TERMINOLOGY.md**: 37 lines, 20 Swedish/English term mappings
+- **copilot-instructions.md**: 152 lines, Copilot integration guide
+
 ## Requirements
 
 ### Validated
 
-- [x] Slide-deck i Marp-format (~45 min presentation) — Validated in Phase 1: Foundation & Setup (skeleton)
-- [x] Språkpolicy: svenska med engelska termer — Validated in Phase 1: Foundation & Setup (TERMINOLOGY.md)
-- [x] On-ramp: hur man börjar light (`/gsd-quick`, `/gsd-fast`, `/gsd-do`) — Validated in Phase 2: Core Payload — On-Ramp
-- [x] GSD deep-dive: arkitektur, workflow, nyckelkoncept — Validated in Phase 3: Core Payload — Full Workflow (Section 3: mental model)
-- [x] Full workflow: new-project → plan → execute lifecycle — Validated in Phase 3: Core Payload — Full Workflow (Section 5: lifecycle)
-- [x] Scenarion: greenfield, brownfield, debugging, quick fixes — Validated in Phase 4: Scenarios & Best Practices (Section 6)
-- [x] Best practices: hur man tänker och promptar för bästa resultat — Validated in Phase 4: Scenarios & Best Practices (Section 7)
+- ✓ Slide-deck i Marp-format (~60 min presentation) — v1.0 (Phases 1-5)
+- ✓ Språkpolicy: svenska med engelska termer — v1.0 (TERMINOLOGY.md, applied in all phases)
+- ✓ On-ramp: hur man börjar light (`/gsd-quick`, `/gsd-fast`, `/gsd-do`) — v1.0 (Phase 2)
+- ✓ GSD deep-dive: arkitektur, workflow, nyckelkoncept — v1.0 (Phase 3)
+- ✓ Full workflow: new-project → plan → execute lifecycle — v1.0 (Phase 3)
+- ✓ Scenarion: greenfield, brownfield, debugging, quick fixes — v1.0 (Phase 4)
+- ✓ Best practices: hur man tänker och promptar för bästa resultat — v1.0 (Phase 4)
+- ✓ Introduktion: varför AI agent frameworks — problemet de löser — v1.0 (Phase 5)
+- ✓ Kort jämförelse: GSD vs BMAD vs andra frameworks — v1.0 (Phase 5 slides + Phase 6 appendix)
+- ✓ Markdown-dokument med fullständigt innehåll (wiki/repo-vänligt) — v1.0 (Phase 6)
+- ✓ Advanced features: phase insertion, cross-AI review, autonomous mode — v1.0 (Phase 6)
 
 ### Active
 
-- [ ] Slide-deck i Marp-format (~45 min presentation) — content to be added in Phase 5
-- [ ] Markdown-dokument med fullständigt innehåll (wiki/repo-vänligt)
-- [ ] Introduktion: varför AI agent frameworks — problemet de löser
-- [ ] Kort jämförelse: GSD vs BMAD vs andra frameworks
-- [ ] Språkpolicy: svenska med engelska termer (phases, roadmap, agents etc.) — policy established, applied in Phases 3–6
+(None — v1.0 shipped. Define new requirements with `/gsd-new-milestone`.)
 
 ### Out of Scope
 
@@ -41,13 +49,13 @@ Utvecklare i teamet ska förstå **hur** man använder GSD i sin vardag — frå
 - Alla är utvecklare men med varierande erfarenhet av AI-assisterad utveckling
 - Presentatören är Tech Lead och vill utbilda teamet
 - GSD är installerat via Copilot CLI skills-systemet
-- Materialet ska kunna läsas standalone (utan presentatör) men primärt användas vid presentation
+- Materialet kan läsas standalone (companion.md) eller användas vid presentation (slides.md)
 - Inga försvenskningar av engelska begrepp — "phase" inte "fas", "roadmap" inte "vägkarta"
 
 ## Constraints
 
 - **Format**: Marp-kompatibel markdown för slides + separat dokument för detaljer
-- **Längd**: ~45 minuter presentation (begränsar antal slides och djup per ämne)
+- **Längd**: ~60 minuter presentation (begränsar antal slides och djup per ämne)
 - **Språk**: Svenska med engelska facktermer — naturlig svengelska
 - **Ton**: Utbildande, inte säljande — fokus på "hur" snarare än "varför"
 - **Publik**: Måste fungera för både skeptiker och entusiaster
@@ -56,10 +64,13 @@ Utvecklare i teamet ska förstå **hur** man använder GSD i sin vardag — frå
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Marp för slides | Markdown-native, versioneringsbart, ingen PowerPoint-dependency | — Pending |
-| Svenska + engelska termer | Naturligt för svensk dev-kontext, undviker krystad försvenskning | — Pending |
-| GSD som huvudfokus med kort framework-jämförelse | Teamet ska använda GSD — jämförelse ger kontext men ska inte förvirra | — Pending |
-| On-ramp med light commands först | Sänker tröskeln — visa att man kan börja utan full workflow | — Pending |
+| Marp för slides | Markdown-native, versioneringsbart, ingen PowerPoint-dependency | ✓ Good |
+| Svenska + engelska termer | Naturligt för svensk dev-kontext, undviker krystad försvenskning | ✓ Good |
+| GSD som huvudfokus med kort framework-jämförelse | Teamet ska använda GSD — jämförelse ger kontext men ska inte förvirra | ✓ Good |
+| On-ramp med light commands först | Sänker tröskeln — visa att man kan börja utan full workflow | ✓ Good |
+| Payload first, framing second | Kan inte skriva sharp intro utan att veta vad den sätter up | ✓ Good |
+| Advanced features only in companion | Phase insertion, cross-AI review, autonomous mode — för mycket för slides | ✓ Good |
+| Philosophy-only BMAD comparison | Balanserad, ärlig — inte en feature matrix | ✓ Good |
 
 ## Evolution
 
@@ -79,4 +90,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-16 after Phase 5 completion — Framing intro & landscape slides added (Sections 1 & 2)*
+*Last updated: 2026-04-16 after v1.0 milestone — all 6 phases shipped*
