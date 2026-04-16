@@ -90,7 +90,10 @@ Plans:
   3. The GSD vs BMAD comparison highlights workflow-centric vs persona-based approaches concisely (≤3 slides) without becoming a comparison trap
   4. The skeptics-to-practitioners narrative arc addresses "am I being replaced?" head-on in the opening minutes and positions AI as collaboration, not replacement
   5. The complete slide deck has coherent section structure and content volume appropriate for ~60 minutes of presentation
-**Plans**: TBD
+**Plans**: 1 plan
+
+Plans:
+- [ ] 05-01-PLAN.md — Section 1 & 2 slides: problem statement, collaboration reframe, agent framework concept, GSD vs BMAD
 
 ### Phase 6: Companion Document
 **Goal**: A standalone markdown reference document expands on the presentation with full command details, advanced features, and detailed scenarios — usable without a presenter
