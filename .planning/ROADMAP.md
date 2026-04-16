@@ -93,7 +93,7 @@ Plans:
 **Plans**: 1 plan
 
 Plans:
-- [ ] 05-01-PLAN.md — Section 1 & 2 slides: problem statement, collaboration reframe, agent framework concept, GSD vs BMAD
+- [x] 05-01-PLAN.md — Section 1 & 2 slides: problem statement, collaboration reframe, agent framework concept, GSD vs BMAD
 
 ### Phase 6: Companion Document
 **Goal**: A standalone markdown reference document expands on the presentation with full command details, advanced features, and detailed scenarios — usable without a presenter

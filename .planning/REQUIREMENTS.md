@@ -10,17 +10,17 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Slide Deck
 
 - [ ] **SLIDE-01**: Marp-kompatibel slide-deck i markdown-format
-- [ ] **SLIDE-02**: ~60 minuters presentationsinnehåll med tydlig sektionsuppdelning
+- [x] **SLIDE-02**: ~60 minuters presentationsinnehåll med tydlig sektionsuppdelning
 - [ ] **SLIDE-03**: Visuell command spectrum — `/gsd-fast` → `/gsd-quick` → `/gsd-do` → full workflow
 - [ ] **SLIDE-04**: Realistiska terminal-exempel (code blocks med prompts och output)
 - [ ] **SLIDE-05**: Svenska text med engelska facktermer genomgående
 
 ### Content — Problem & Kontext
 
-- [ ] **CTXT-01**: Problem statement — varför agent frameworks behövs (context window limits, consistency, quality gates)
-- [ ] **CTXT-02**: Konceptuell förklaring — vad är ett AI agent framework (LLM + instructions + tools + memory)
-- [ ] **CTXT-03**: Kort jämförelse GSD vs BMAD vs andra frameworks (workflow-centric vs persona-based)
-- [ ] **CTXT-04**: Skeptics-to-practitioners narrative arc — adressera "ersätter AI mig?" tidigt
+- [x] **CTXT-01**: Problem statement — varför agent frameworks behövs (context window limits, consistency, quality gates)
+- [x] **CTXT-02**: Konceptuell förklaring — vad är ett AI agent framework (LLM + instructions + tools + memory)
+- [x] **CTXT-03**: Kort jämförelse GSD vs BMAD vs andra frameworks (workflow-centric vs persona-based)
+- [x] **CTXT-04**: Skeptics-to-practitioners narrative arc — adressera "ersätter AI mig?" tidigt
 
 ### Content — GSD Deep-Dive
 
@@ -91,14 +91,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | SLIDE-01 | Phase 1 | Pending |
-| SLIDE-02 | Phase 5 | Pending |
+| SLIDE-02 | Phase 5 | Complete |
 | SLIDE-03 | Phase 2 | Pending |
 | SLIDE-04 | Phase 2 | Pending |
 | SLIDE-05 | Phase 1 | Pending |
-| CTXT-01 | Phase 5 | Pending |
-| CTXT-02 | Phase 5 | Pending |
-| CTXT-03 | Phase 5 | Pending |
-| CTXT-04 | Phase 5 | Pending |
+| CTXT-01 | Phase 5 | Complete |
+| CTXT-02 | Phase 5 | Complete |
+| CTXT-03 | Phase 5 | Complete |
+| CTXT-04 | Phase 5 | Complete |
 | DEEP-01 | Phase 3 | Pending |
 | DEEP-02 | Phase 3 | Pending |
 | DEEP-03 | Phase 3 | Pending |
