@@ -469,6 +469,99 @@ Sedan verifierar den i fyra nivåer:
 
 ---
 
+## Vilket kommando ska jag använda?
+
+```
+What are you doing?
+├── Starting something new?
+│   ├── Whole project       → /gsd-new-project
+│   └── One feature         → /gsd-quick --discuss
+├── Working on existing code?
+│   ├── First time here?    → /gsd-map-codebase
+│   ├── Bug or error?       → /gsd-debug
+│   └── Big refactor?       → /gsd-add-phase
+├── Something small?
+│   ├── Trivial fix (≤3)    → /gsd-fast
+│   └── Not sure?           → /gsd-do
+└── Coming back?
+    └── Resuming work       → /gsd-resume-work
+```
+
+---
+
+## Greenfield — nytt projekt
+
+```bash
+$ /gsd-new-project
+Vad vill du bygga? → "En REST API för kundhantering"
+✅ 12 requirements defined
+✅ 5 phases created
+✅ Phase 1 planned and executed
+✅ "Kan en användare registrera sig? ✅"
+```
+
+Från idé till verifierat resultat — utan att lämna editorn.
+
+---
+
+## Brownfield — kartlägg först
+
+```bash
+$ /gsd-map-codebase
+Mapping... 7 analysis documents created
+   .planning/codebase/ARCHITECTURE.md
+   .planning/codebase/CONVENTIONS.md
+   .planning/codebase/STRUCTURE.md
+   ...
+```
+
+GSD förstår nu din kodbas — mönster, konventioner, beroenden.
+
+---
+
+## Brownfield — planera som vanligt
+
+```bash
+$ /gsd-add-phase "add search endpoint to user API"
+Research uses codebase map → respects existing patterns
+✅ Phase planned with 2 plans
+```
+
+Kartan gör skillnaden — utan den gissar agenten om din projektstruktur.
+
+---
+
+## Quick fix — två vägar
+
+**Enkelt? `/gsd-fast`**
+
+```bash
+$ /gsd-fast "fix the 401 error in login validation"
+✅ Done: Fixed token expiry check
+   Files: src/auth.ts
+```
+
+**Behöver utredning? `/gsd-debug`**
+
+```bash
+$ /gsd-debug
+Parallel agents investigating...
+✅ Root cause: missing dependency array in useEffect
+   Created: DEBUG-login-401.md
+```
+
+Börja med `/gsd-fast`. Är problemet djupare — `/gsd-debug` utreder systematiskt.
+
+---
+
+## Rätt kommando är halva jobbet
+
+Ni har verktygen. Men agentens resultat beror på hur ni tänker och kommunicerar.
+
+Nästa steg: mindset shifts och best practices.
+
+---
+
 <!-- _class: divider -->
 <!-- _paginate: skip -->
 
