@@ -531,16 +531,18 @@ Kartan gör skillnaden — utan den gissar agenten om din projektstruktur.
 
 ---
 
-## Quick fix — två vägar
-
-**Enkelt? `/gsd-fast`**
+## Quick fix — `/gsd-fast`
 
 ```bash
 $ /gsd-fast "fix the 401 error in login validation"
 ✅ Fixed token expiry check — src/auth.ts
 ```
 
-**Behöver utredning? `/gsd-debug`**
+Enkelt problem, känt scope → `/gsd-fast` löser det direkt.
+
+---
+
+## Behöver utredning? — `/gsd-debug`
 
 ```bash
 $ /gsd-debug
