@@ -537,17 +537,14 @@ Kartan gör skillnaden — utan den gissar agenten om din projektstruktur.
 
 ```bash
 $ /gsd-fast "fix the 401 error in login validation"
-✅ Done: Fixed token expiry check
-   Files: src/auth.ts
+✅ Fixed token expiry check — src/auth.ts
 ```
 
 **Behöver utredning? `/gsd-debug`**
 
 ```bash
 $ /gsd-debug
-Parallel agents investigating...
 ✅ Root cause: missing dependency array in useEffect
-   Created: DEBUG-login-401.md
 ```
 
 Börja med `/gsd-fast`. Är problemet djupare — `/gsd-debug` utreder systematiskt.
