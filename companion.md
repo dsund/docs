@@ -321,16 +321,307 @@ What are you doing?
 Börja till vänster (enklare). Flytta höger (mer struktur) när du behöver mer. Du kan alltid börja med `/gsd-fast` eller `/gsd-do` och låta GSD föreslå ett mer strukturerat alternativ om uppgiften visar sig vara större än du trodde.
 
 ## 4. Full Workflow
+
+`/gsd-fast` och `/gsd-quick` räcker långt — men ibland är uppgiften för stor. Du ska bygga en hel applikation, refaktorera ett system, eller leverera en feature som spänner över flera moduler. Då behöver du hela maskineriet: research, planning, execution och verification.
+
 ### /gsd-new-project — från idé till roadmap
+
+Allt börjar med en idé. `/gsd-new-project` tar den från en mening till en fullständig projektplan genom fem steg:
+
+```
+/gsd-new-project
+     │
+     ▼
+Discuss ──▶ Plan ──▶ Execute ──▶ Verify
+Beslut      Research   Waves      Mål ≠
+& val       + plan     + code     tasks
+     │          │          │          │
+CONTEXT.md  PLAN.md   SUMMARY.md  VERIFICATION.md
+```
+
+Varje steg producerar artifacts som nästa steg läser. Kedjan är inte linjär i praktiken — du kan gå tillbaka och revidera — men flödet ger struktur åt arbetet.
+
+```bash
+$ /gsd-new-project
+Vad vill du bygga? > En REST API för kundhantering
+...
+Requirements defined: 12 items
+Roadmap: 5 phases created
+Ready: /gsd-plan-phase 1
+```
+
+**Discuss** — GSD genomför en djupintervju om vad du vill bygga. Den ställer frågor om scope, constraints, teknikval och kvalitetskrav. Svaren sparas i CONTEXT.md så att alla efterföljande agents har samma förståelse.
+
+**Plan** — research-agents undersöker domänen (bibliotek, mönster, fallgropar) och planning-agents skapar detaljerade planer med tasks, beroenden och waves. Resultatet är PLAN.md — en executionsplan, inte en TODO-lista.
+
+**Execute** — executor-agenten implementerar planen task för task. Varje task resulterar i en atomic commit. Plans inom samma wave körs parallellt, waves körs i ordning.
+
+**Verify** — verify-agents kontrollerar att det faktiska målet är uppnått, inte bara att tasks är avbockade. Resultatet sparas i VERIFICATION.md.
+
 ### Phase lifecycle: plan → execute → verify
+
+Varje phase i roadmappen har ett tydligt mål och verifierbara success criteria — inte TODO-listor:
+
+```markdown
+## Phases
+
+- [x] Phase 1: Foundation
+- [ ] **Phase 2: Auth** ← du är här
+- [ ] Phase 3: API endpoints
+
+### Phase 2: Auth
+**Goal**: Användare kan logga in
+**Success Criteria:**
+  1. Login-formulär validerar credentials
+  2. JWT-tokens utfärdas vid lyckad inloggning
+  3. Skyddade routes avvisar oautentiserade requests
+```
+
+Success criteria formuleras som påståenden som kan vara sanna eller falska. Det är det som gör verification möjlig — "kan en användare logga in?" har ett definitivt svar.
+
+Inom varje phase organiseras arbetet i waves:
+
+```
+Phase 2: Auth System
+────────────────────
+
+Wave 1    [Plan A: Models]  [Plan B: Utils]
+          ────────────────  ───────────────
+                  ↓ klart
+
+Wave 2    [Plan C: Routes + middleware]
+          ─────────────────────────────
+                  ↓ klart
+
+Verify    Goal-backward: "Kan en användare logga in?"
+```
+
+Plans som inte beror på varandra körs parallellt i samma wave. Plans med beroenden placeras i senare waves. Resultatet: snabbare execution utan att kompromissa med ordning.
+
 ### Projektminne: STATE.md och /gsd-resume-work
+
+Det som skiljer GSD från en vanlig AI-chat är att inget försvinner. STATE.md håller koll på exakt var projektet befinner sig:
+
+```markdown
+## Current Position
+
+Phase: 2 of 5
+Plan: 1 of 2
+Status: Executing
+Progress: [████░░░░░░] 35%
+
+Stopped at: JWT middleware implementation
+Resume: /gsd-resume-work
+```
+
+Tre dagar senare öppnar du VS Code igen:
+
+```bash
+$ /gsd-resume-work
+📍 Phase 2: Auth System — Plan 1, Task 3
+   Stopped at: JWT middleware
+   Kvar: 2 tasks i Plan 1, sedan Plan 2
+```
+
+STATE.md håller koll — du behöver inte komma ihåg. Det fungerar oavsett om det gått tre timmar eller tre veckor. Varje decision som tagits, varje fil som skapats, varje avvikelse som hanterats — allt finns dokumenterat i `.planning/`-strukturen.
+
 ### Milestones och arkivering
 
+GSD hanterar inte bara enskilda phases utan hela projektets livscykel:
+
+**Starta:** `/gsd-new-project` — skapar allt från scratch: PROJECT.md, REQUIREMENTS.md, ROADMAP.md, STATE.md.
+
+**Pausa & återuppta:** `/gsd-pause-work` → `/gsd-resume-work` — spara och återställ kontext exakt.
+
+**Kolla status:** `/gsd-progress` — var står projektet? Vilka phases är klara? Vad återstår?
+
+**Städa upp:** `/gsd-cleanup` — arkivera klara phases för att hålla `.planning/` rent.
+
+**Byt projekt:** Workspaces isolerar olika projekt i samma repo. Varje workspace har sin egen `.planning/`-struktur.
+
+Milestones grupperar phases i versionerade leveranser (v1, v2). När en milestone är klar kan du köra retrospektiv, arkivera, och starta nästa.
+
+### Goal-backward verification
+
+Det här är kanske GSD:s viktigaste koncept. Traditionell task-checking ser ut så här:
+
+```
+✅ LoginComponent.tsx skapad
+✅ jwt-utils.ts skapad
+✅ RouteGuard.tsx skapad
+────────────────────────
+3/3 tasks klara! 🎉
+```
+
+Allt ser bra ut — men fungerar det? GSD:s goal-backward verification ställer tre frågor:
+
+1. Vad måste vara **SANT** för att målet ska vara uppnått?
+2. Vad måste **FINNAS** för att det ska vara sant?
+3. Vad måste vara **KOPPLAT** för att det ska fungera?
+
+Sedan verifierar den i fyra nivåer:
+
+```
+Goal: "Användare kan logga in"
+  ✅ Exists: Alla filer finns
+  ❌ Substantive: LoginComponent returnerar <div/>
+  ❌ Wired: RouteGuard importeras inte
+  ❌ Functional: Inloggning fungerar inte
+────────────────────────
+Tasks klara — men målet INTE uppnått.
+```
+
+**Exists** — finns filerna? Enklaste kontrollen. Nästan alltid "ja" men säger inget om kvalitet.
+
+**Substantive** — har filerna meningsfullt innehåll? En komponent som returnerar `<div/>` klarar Exists men inte Substantive.
+
+**Wired** — är komponenterna kopplade till varandra? Importeras RouteGuard i rätt routes? Anropas login-API:et från formuläret?
+
+**Functional** — fungerar det faktiskt? Kan en användare logga in end-to-end?
+
+> Inte "är koden skriven?" utan "fungerar det för användaren?"
+
+Det här är skillnaden mellan "tasks done" och "goal achieved" — och det är anledningen till att GSD fångar problem som andra AI-assistenter missar.
+
+### Phase insertion — `/gsd-insert-phase`
+
+Du är mitt i Phase 3 av ett API-projekt. Under implementation inser du att du behöver en databasmigrering innan API-endpoints kan fungera. Att starta om hela projektet vore slöseri — allt du gjort hittills är korrekt.
+
+```bash
+$ /gsd-insert-phase "database migration setup" --before 3
+✅ Phase 2.1 inserted: Database Migration
+   Roadmap updated — Phase 3 becomes Phase 4
+   Ready: /gsd-plan-phase 2.1
+```
+
+GSD numrerar om roadmappen automatiskt och bevarar alla befintliga artifacts. Dina färdiga phases påverkas inte — Phase 1 och 2 är fortfarande klara. Den nya phase:en får ett decimalnummer (2.1) som placerar den i rätt ordning.
+
+Det här är inte ovanligt i riktiga projekt. Requirements förändras, du upptäcker saknade steg, teamet beslutar att utöka scope. Istället för att starta om eller hacka runt problemet ger `/gsd-insert-phase` ett strukturerat sätt att anpassa planen.
+
+**När du behöver det:**
+- Du upptäcker ett saknat steg mitt i arbetet
+- En extern dependency kräver förberedelse du inte planerade
+- Scope utökas — en ny requirement behöver eget steg
+
+### Autonomous mode — `/gsd-autonomous`
+
+När du har kört GSD genom ett par projekt och litar på workflow:en finns nästa steg: autonomous mode.
+
+Istället för att starta varje phase manuellt — plan, execute, verify, plan nästa — låter du GSD köra igenom hela pipeline:n utan att stanna mellan stegen:
+
+```bash
+$ /gsd-autonomous
+Phase 1: Foundation ████████████ ✅
+Phase 2: Auth       ████████████ ✅
+Phase 3: API        ████████░░░░ executing...
+```
+
+GSD hanterar diskussion, planning, execution och verification för varje phase automatiskt. Om verification hittar problem skapar den gap-closure plans och kör om. Du kan göra annat under tiden och granska resultatet när det är klart.
+
+**Viktigt:** Autonomous mode är inte för varje projekt. Det kräver:
+- Tydliga requirements och väldefinierade phases
+- Erfarenhet av GSD:s workflow — du vet vad du kan förvänta dig
+- Tillit till att verification fångar problem
+
+Tänk på det som skillnaden mellan att köra manuell växel och automat. Båda fungerar — men automat passar bäst när vägen är rak och du har kört den förut.
+
+**När du ska använda det:**
+- Projektet har tydliga requirements och phases
+- Du har erfarenhet av GSD:s workflow och litar på verification
+- Du vill köra en hel pipeline medan du gör annat
+
 ## 5. Scenarion
+
+Olika situationer kräver olika GSD-kommandon. De här scenarierna visar vilka kommandon du ska välja i de vanligaste situationerna du möter som utvecklare.
+
 ### Greenfield-projekt
+
+Du ska bygga något helt nytt — en REST API, en webbapp, en CLI-tool. Inget befintligt code att ta hänsyn till.
+
+```bash
+$ /gsd-new-project
+Vad vill du bygga? → "En REST API för kundhantering"
+✅ 12 requirements defined
+✅ 5 phases created
+✅ Phase 1 planned and executed
+✅ "Kan en användare registrera sig? ✅"
+```
+
+Flödet för greenfield:
+1. **`/gsd-new-project`** — definiera vision, requirements, roadmap
+2. **`/gsd-plan-phase 1`** — planera första phase:en (eller låt GSD göra det automatiskt)
+3. **`/gsd-execute-phase 1`** — bygg det
+4. **`/gsd-verify-work`** — verifiera att phase-målet är uppnått
+5. Fortsätt med Phase 2, 3, etc.
+
+Från idé till verifierat resultat — utan att lämna editorn. Varje phase bygger på den föregående, och verification säkerställer att ingenting faller mellan stolarna.
+
 ### Brownfield: ny feature i befintlig kodbas
+
+Du ska lägga till en feature i ett befintligt projekt. Koden är redan skriven av andra (eller av dig, för länge sedan). Du behöver förstå mönster, konventioner och beroenden innan du börjar.
+
+```bash
+$ /gsd-map-codebase
+Mapping... 7 analysis documents created
+   .planning/codebase/ARCHITECTURE.md
+   .planning/codebase/CONVENTIONS.md
+   .planning/codebase/STRUCTURE.md
+   ...
+```
+
+`/gsd-map-codebase` skapar en kartläggning av den befintliga kodbasen. GSD analyserar arkitektur, kodkonventioner, filstruktur och beroenden. Det här blir grunden för alla efterföljande beslut.
+
+```bash
+$ /gsd-add-phase "add search endpoint to user API"
+Research uses codebase map → respects existing patterns
+✅ Phase planned with 2 plans
+```
+
+Med kartan som grund respekterar GSD befintliga mönster. Om projektet använder en viss mappstruktur, namnkonvention eller error-handling-strategi följer den nya koden samma stil.
+
+> Kartan gör skillnaden — utan den gissar agenten om din projektstruktur.
+
 ### Buggfixar och debugging
+
+En 401-error dyker upp i login-validationen. Hur du hanterar det beror på hur väl du förstår problemet.
+
+**Enkelt problem, känt scope** — du vet var felet är:
+
+```bash
+$ /gsd-fast "fix the 401 error in login validation"
+✅ Fixed token expiry check — src/auth.ts
+```
+
+**Komplext problem, behöver utredning** — du vet inte vad som orsakar det:
+
+```bash
+$ /gsd-debug
+✅ Root cause: missing dependency array in useEffect
+```
+
+`/gsd-debug` utreder systematiskt. Den formulerar hypoteser, testar dem, och spårar sig fram till grundorsaken. Den hanterar sin egen session med checkpoints, så att du kan avbryta och återuppta.
+
+Tumregel: börja med `/gsd-fast`. Är problemet djupare än du trodde — byt till `/gsd-debug`.
+
 ### Quick fixes och config-ändringar
+
+Inte allt arbete är features eller buggar. Ibland behöver du bara:
+
+```bash
+$ /gsd-fast "add NODE_ENV=production to .env.example"
+✅ Done: Updated .env.example
+   Commit: c4d8e2f
+   Files: .env.example
+```
+
+```bash
+$ /gsd-fast "update the copyright year to 2026 in LICENSE"
+✅ Done: Updated LICENSE
+   Commit: f1a9b3c
+   Files: LICENSE
+```
+
+Config-ändringar, typos, dependency-uppdateringar, `.gitignore`-tillägg — allt som tar under 2 minuter manuellt och berör max 3 filer. `/gsd-fast` är det rätta verktyget. Använd inte full workflow för en typo.
 
 ## 6. Best Practices
 ### Tänk i outcomes
