@@ -310,14 +310,11 @@ Eller refaktorera ett auth-system?
   /gsd-new-project
        │
        ▼
-  ┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐
-  │ Discuss  │──▶│  Plan   │──▶│ Execute │──▶│ Verify  │
-  │ Beslut   │   │Research │   │  Waves  │   │ Mål ≠   │
-  │ & val    │   │ + plan  │   │  + code │   │ tasks   │
-  └─────────┘   └─────────┘   └─────────┘   └─────────┘
-       │              │              │              │
-  CONTEXT.md    PLAN.md +      SUMMARY.md    VERIFICATION.md
-                RESEARCH.md
+  Discuss ──▶ Plan ──▶ Execute ──▶ Verify
+  Beslut      Research   Waves      Mål ≠
+  & val       + plan     + code     tasks
+       │          │          │          │
+  CONTEXT.md  PLAN.md   SUMMARY.md  VERIFICATION.md
 ```
 
 Varje steg producerar artifacts → nästa steg läser dem.
@@ -383,10 +380,7 @@ Kombinera fritt: `/gsd-quick --discuss --research --full`
 Phase: 2 of 5
 Plan: 1 of 2
 Status: Executing
-
 Progress: [████░░░░░░] 35%
-
-## Session Continuity
 
 Stopped at: JWT middleware implementation
 Resume: /gsd-resume-work
@@ -394,12 +388,18 @@ Resume: /gsd-resume-work
 
 *3 dagar senare...*
 
+---
+
+## Återuppta exakt där du var
+
 ```bash
 $ /gsd-resume-work
 📍 Phase 2: Auth System — Plan 1, Task 3
    Stopped at: JWT middleware
    Kvar: 2 tasks i Plan 1, sedan Plan 2
 ```
+
+STATE.md håller koll — du behöver inte komma ihåg.
 
 ---
 
