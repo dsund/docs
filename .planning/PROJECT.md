@@ -17,15 +17,15 @@ Utvecklare i teamet ska förstå **hur** man använder GSD i sin vardag — frå
 - [x] On-ramp: hur man börjar light (`/gsd-quick`, `/gsd-fast`, `/gsd-do`) — Validated in Phase 2: Core Payload — On-Ramp
 - [x] GSD deep-dive: arkitektur, workflow, nyckelkoncept — Validated in Phase 3: Core Payload — Full Workflow (Section 3: mental model)
 - [x] Full workflow: new-project → plan → execute lifecycle — Validated in Phase 3: Core Payload — Full Workflow (Section 5: lifecycle)
+- [x] Scenarion: greenfield, brownfield, debugging, quick fixes — Validated in Phase 4: Scenarios & Best Practices (Section 6)
+- [x] Best practices: hur man tänker och promptar för bästa resultat — Validated in Phase 4: Scenarios & Best Practices (Section 7)
 
 ### Active
 
-- [ ] Slide-deck i Marp-format (~45 min presentation) — content to be added in Phases 4–5
+- [ ] Slide-deck i Marp-format (~45 min presentation) — content to be added in Phase 5
 - [ ] Markdown-dokument med fullständigt innehåll (wiki/repo-vänligt)
 - [ ] Introduktion: varför AI agent frameworks — problemet de löser
 - [ ] Kort jämförelse: GSD vs BMAD vs andra frameworks
-- [ ] Scenarion: greenfield, brownfield, debugging, quick fixes
-- [ ] Best practices: hur man tänker och promptar för bästa resultat
 - [ ] Språkpolicy: svenska med engelska termer (phases, roadmap, agents etc.) — policy established, applied in Phases 3–6
 
 ### Out of Scope
