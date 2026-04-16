@@ -107,9 +107,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Sections 1-3: Introduktion, GSD i korthet, Kom igång (On-Ramp)
-- [ ] 06-02-PLAN.md — Sections 4-5: Full Workflow (+ phase insertion, autonomous mode) and Scenarion
-- [ ] 06-03-PLAN.md — Sections 6-7 + Appendix: Best Practices (+ cross-AI review), Referens, GSD vs BMAD
+- [x] 06-01-PLAN.md — Sections 1-3: Introduktion, GSD i korthet, Kom igång (On-Ramp)
+- [x] 06-02-PLAN.md — Sections 4-5: Full Workflow (+ phase insertion, autonomous mode) and Scenarion
+- [x] 06-03-PLAN.md — Sections 6-7 + Appendix: Best Practices (+ cross-AI review), Referens, GSD vs BMAD
 
 ## Progress
 
