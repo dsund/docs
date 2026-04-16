@@ -74,7 +74,11 @@ Plans:
   3. Mental model shifts (think outcomes not steps, you decide / AI executes) and prompt crafting guidance are stated as actionable principles
   4. Anti-patterns (vague prompts, skipping verification, micro-management) and escape hatches (when NOT to use agents) are presented with equal weight — honesty builds credibility
   5. A concrete "Start Monday" challenge gives the audience a zero-friction first step they can take immediately after the presentation
-**Plans**: TBD
+**Plans:** 2 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Section 6: Decision tree & scenarios (greenfield, brownfield, quick fix)
+- [ ] 04-02-PLAN.md — Sections 7-8: Best practices, anti-patterns, escape hatches & Start Monday
 
 ### Phase 5: Framing — Intro & Landscape
 **Goal**: The presentation opens with a compelling problem statement and positions GSD within the AI agent landscape, earning permission to go deep before the technical content begins
