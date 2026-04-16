@@ -624,15 +624,198 @@ $ /gsd-fast "update the copyright year to 2026 in LICENSE"
 Config-ändringar, typos, dependency-uppdateringar, `.gitignore`-tillägg — allt som tar under 2 minuter manuellt och berör max 3 filer. `/gsd-fast` är det rätta verktyget. Använd inte full workflow för en typo.
 
 ## 6. Best Practices
+
+Att ha rätt verktyg är halva jobbet — den andra halvan är hur du tänker och kommunicerar med agenten. De här principerna hjälper dig att få ut mest möjligt av GSD.
+
 ### Tänk i outcomes
+
+❌ **Steg-för-steg:**
+> "Create a file called AuthService.ts, add a login method that accepts email and password, hash with bcrypt, create a JWT token..."
+
+✅ **Outcome:**
+> "Användare ska kunna logga in med email och lösenord"
+
+Varför fungerar outcomes bättre? GSD härleder stegen från målet. Planning-agenten undersöker domänen, väljer libraries, bryter ner i tasks — och gör det ofta bättre än du själv hade gjort, för den har tillgång till research och mönsterigenkänning.
+
+Du definierar vad "klart" ser ut. GSD planerar vägen dit.
+
+Ytterligare ett exempel:
+
+❌ `"Move all auth functions from utils.ts into a new auth/ folder with separate files for jwt.ts, password.ts, and middleware.ts"`
+
+✅ `"Refactor the auth module — it mixes JWT creation, validation, and user lookup in one file"`
+
+Det första dikterar implementationen. Det andra beskriver problemet och låter GSD hitta den bästa lösningen — som kanske ser helt annorlunda ut än vad du föreställde dig.
+
 ### Trust but verify
+
+Lita på att GSD gör jobbet — men kör alltid verification.
+
+Det är frestande att se "3/3 tasks done!" och gå vidare. Men som vi såg i Section 4: task completion ≠ goal achievement. En login-komponent kan vara "klar" utan att en enda användare kan logga in.
+
+Praktiska råd:
+- Använd `/gsd-verify-work` efter varje phase
+- Använd `--full` flaggan på `/gsd-quick` för viktig kod
+- Granska VERIFICATION.md — den visar exakt vad som kontrollerades och vad som passerade
+
+Verification kostar lite extra tid men sparar mångdubbelt i omarbete. Det är skillnaden mellan att tro att det fungerar och att veta.
+
+### Prompt crafting — var specifik
+
+❌ `"Fix the bug"`
+✅ `"The login form returns 401 when valid credentials are submitted"`
+
+❌ `"Add a button"`
+✅ `"Users should be able to export their data as CSV from the settings page"`
+
+❌ `"Refactor this"`
+✅ `"Refactor the auth module — it mixes JWT creation, validation, and user lookup in one file"`
+
+❌ `"Make it faster"`
+✅ `"The dashboard loads in 4 seconds — optimize database queries to bring it under 1 second"`
+
+Formeln: **Kontext + mål + constraints = bättre resultat.**
+
+GSD fungerar bäst när den förstår VAD du vill uppnå, VARFÖR det behövs, och vilka BEGRÄNSNINGAR som gäller. Ju mer specifik du är om problemet, desto bättre blir lösningen.
+
+### Tre vanliga misstag
+
+**🚫 Vaga prompts** — agenten gissar fel, du gör om arbetet.
+
+Hur det ser ut: `"Fix the thing"` → agenten ändrar fel fil → du korrigerar → den ändrar fel sak → du ger upp och gör det manuellt.
+
+Hur du undviker det: beskriv problemet specifikt. Vad händer? Vad borde hända? Var i koden finns problemet?
+
+**🚫 Skippa verification** — "3/3 tasks done!" men inget fungerar.
+
+Hur det ser ut: du ser gröna bockar och går vidare. Nästa phase bygger på kod som inte fungerar. Problem ackumuleras tills allt kollapsar.
+
+Hur du undviker det: kör `/gsd-verify-work` eller använd `--full`. De 30 sekunder det tar sparar timmar av debugging.
+
+**🚫 Micro-management** — du dikterar varje fil och rad.
+
+Hur det ser ut: du skriver en 500-ord prompt som specificerar filnamn, imports, funktionsnamn och implementation. GSD gör exakt det du sa — men missar en bättre lösning.
+
+Hur du undviker det: beskriv outcome, inte steg. Låt GSD:s planning-agent bestämma implementationen. Du kan alltid granska och justera efteråt.
+
 ### När du INTE ska använda GSD
+
+🚫 **Arkitekturbeslut** — agenten optimerar lokalt, du optimerar globalt. Fundamentala arkitekturval (monolith vs microservices, databasval, API-design) kräver mänskligt omdöme.
+
+🚫 **Security-kritisk kod** — alltid manuell review oavsett. Auth, kryptering, betalningshantering — lita inte blint på genererad kod.
+
+🚫 **Teamets lärande** — om syftet är att lära, inte leverera. Att delegera till AI när du borde förstå koden motverkar långsiktig kompetensuppbyggnad.
+
+🚫 **Regelverk & compliance** — agenten förstår inte juridiskt ansvar. GDPR, PCI-DSS, branschspecifika krav kräver mänsklig expertis.
+
+🚫 **Det du inte kan reviewera** — delegera inte det du inte kan bedöma. Om du inte kan avgöra om koden är korrekt bör du inte använda AI för att skriva den.
+
+> GSD gör dig effektivare — men det är fortfarande du som är ansvarig.
+
 ### Gradvis adoption
 
+Du behöver inte gå all-in dag ett. Börja smått och bygg tillit:
+
+| Tid | Utmaning | Kommando |
+|-----|----------|----------|
+| 5 min | Fixa en riktig typo i din kodbas | `/gsd-fast` |
+| 30 min | Lägg till en liten feature | `/gsd-quick` |
+| 2 timmar | Starta ett nytt sidoprojekt | `/gsd-new-project` |
+
+Vecka 1: använd bara `/gsd-fast` för triviala fixar. Lär dig hur commits ser ut, hur STATE.md uppdateras, hur det känns.
+
+Vecka 2: prova `/gsd-quick` för en riktig feature. Se hur planning fungerar, granska planen innan execution.
+
+Vecka 3+: kör ett riktigt projekt med `/gsd-new-project`. Nu har du tillräckligt med erfarenhet för att utvärdera resultaten och justera workflow:en.
+
+### Cross-AI review — `/gsd-review`
+
+Du har låtit Copilot bygga en auth-modul genom GSD. Koden fungerar, verification passerar — men du vill ha en second opinion. Kanske en annan AI ser mönster eller problem som Copilot missade.
+
+```bash
+$ /gsd-review
+Reviewing Phase 2: Auth System
+Reviewer 1 (Claude): 3 concerns, 2 suggestions
+Reviewer 2 (GPT-4): 1 concern, 4 suggestions
+✅ Consensus: 2 shared concerns identified
+```
+
+`/gsd-review` använder en annan AI-modell för att granska arbetet som den primära agenten utfört — som en code review fast med olika AI-perspektiv. Flera reviewers ger oberoende feedback som syntetiseras till konsensus.
+
+Olika AI-modeller har olika styrkor och blinda fläckar. Cross-review fångar problem som en enda modell kan missa — precis som mänsklig code review fungerar bättre med flera ögon.
+
+**När du ska använda det:**
+- Kritisk kod — auth, betalningar, datahantering
+- Du vill validera arkitekturbeslut från en annan vinkel
+- Du har tid för en extra kvalitetskontroll och vill maximera confidence
+
 ## 7. Referens
+
 ### Kommandoöversikt
+
+De viktigaste GSD-kommandona — från enklaste till mest avancerade.
+
+| Kommando | Beskrivning | När? |
+|----------|-------------|------|
+| `/gsd-fast` | Snabbfix utan planning — atomic commit | Triviala ändringar (≤3 filer) |
+| `/gsd-quick` | Task med planner + executor, composable flags | Ny feature, liten refaktor |
+| `/gsd-do` | Smart routing — väljer rätt kommando åt dig | Du vet inte vilket kommando du behöver |
+| `/gsd-new-project` | Nytt projekt med full workflow | Greenfield — helt nytt projekt |
+| `/gsd-plan-phase` | Planerar en phase med tasks och waves | Nästa phase i roadmap ska planeras |
+| `/gsd-execute-phase` | Exekverar en planerad phase | Phase är planerad, redo att bygga |
+| `/gsd-verify-work` | Goal-backward verification av phase | Phase exekverad, mål ska verifieras |
+| `/gsd-resume-work` | Återuppta arbete efter paus | Du kommer tillbaka till ett projekt |
+| `/gsd-progress` | Visa projektets status | Snabb koll — var står vi? |
+| `/gsd-map-codebase` | Kartlägger befintlig kodbas | Brownfield — innan du börjar ändra |
+| `/gsd-debug` | Systematisk buggutredning | Komplext problem som kräver analys |
+| `/gsd-insert-phase` | Lägg till en phase mitt i roadmap | Saknat steg upptäckt under arbete |
+| `/gsd-review` | Cross-AI review av utfört arbete | Kritisk kod — vill ha second opinion |
+| `/gsd-autonomous` | Kör hela pipeline:n utan stopp | Erfaren användare, tydligt scope |
+
+Alla kommandon körs i Copilot Chat. Composable flags (`--discuss`, `--research`, `--full`) fungerar med `/gsd-quick`.
+
 ### .planning/ filstruktur
+
+```
+.planning/
+├── PROJECT.md        # Vad vi bygger — vision, constraints, core value
+├── REQUIREMENTS.md   # Alla krav med spårbarhet till phases
+├── ROADMAP.md        # Phases med success criteria och beroenden
+├── STATE.md          # Var projektet är just nu — progress, beslut
+├── config.json       # GSD-konfiguration för detta projekt
+└── phases/
+    └── 01-namn/
+        ├── 01-CONTEXT.md       # Beslut från /gsd-discuss-phase
+        ├── 01-RESEARCH.md      # Domänresearch från /gsd-research-phase
+        ├── 01-PLAN.md          # Executionsplan med tasks
+        ├── 01-SUMMARY.md       # Resultat efter execution
+        └── 01-VERIFICATION.md  # Goal-backward verification
+```
+
+Varje phase producerar sin egen uppsättning artifacts. Inget försvinner — du kan alltid gå tillbaka och se vad som bestämdes och varför. Det här är det som skiljer GSD från en vanlig AI-chat: persistent memory som överlever sessioner, dagar och veckor.
+
 ### Länkar och resurser
 
+- **Installera GSD:** `npx get-shit-done-cc@latest`
+- **GitHub Copilot:** VS Code med GitHub Copilot-extension
+- **Terminologi:** Se `TERMINOLOGY.md` i projektets rot för svensk/engelsk termreferens
+
 ## Appendix
+
 ### GSD vs BMAD — kortjämförelse
+
+GSD och BMAD är båda AI agent frameworks — men de löser olika problem med olika filosofier.
+
+| Dimension | GSD | BMAD |
+|-----------|-----|------|
+| **Filosofi** | Workflow-centric — strukturerad execution pipeline | Persona-based — specialiserade roller (PM, Architect, Dev) |
+| **Agents** | Researcher, Planner, Executor, Verifier — funktionsroller | PM, Architect, Developer, QA — yrkesroller |
+| **Styrka** | Execution + verification — bygger och kontrollerar | Strategi + dokumentation — planerar och dokumenterar |
+| **Workflow** | Linjär pipeline: discuss → plan → execute → verify | Rollbaserade handoffs: varje persona bidrar med sin expertis |
+| **Bäst för** | Projekt där execution och kvalitetskontroll är kritiskt | Projekt där strategisk planering och dokumentation är viktigast |
+
+Det här är inte en tävling. GSD och BMAD löser olika problem — som en skruvmejsel och en hammare. GSD utmärker sig när du behöver strukturerad execution med inbyggda kvalitetsgrindar: bygga kod, verifiera att den fungerar, hantera avvikelser automatiskt.
+
+BMAD utmärker sig när du behöver strategisk planering och grundlig dokumentation: definiera arkitektur, kartlägga stakeholders, skapa omfattande design-docs innan en rad kod skrivs.
+
+Vi valde GSD — execution med kvalitetskontroll. Det passade vårt behov: utvecklare som vill bygga saker effektivt, med förtroende för att resultatet faktiskt fungerar. Men om ditt projekt kräver djup strategisk planering och dokumentation först, kan BMAD vara ett bättre val.
