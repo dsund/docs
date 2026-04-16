@@ -77,8 +77,8 @@ Plans:
 **Plans:** 2 plans
 
 Plans:
-- [ ] 04-01-PLAN.md — Section 6: Decision tree & scenarios (greenfield, brownfield, quick fix)
-- [ ] 04-02-PLAN.md — Sections 7-8: Best practices, anti-patterns, escape hatches & Start Monday
+- [x] 04-01-PLAN.md — Section 6: Decision tree & scenarios (greenfield, brownfield, quick fix)
+- [x] 04-02-PLAN.md — Sections 7-8: Best practices, anti-patterns, escape hatches & Start Monday
 
 ### Phase 5: Framing — Intro & Landscape
 **Goal**: The presentation opens with a compelling problem statement and positions GSD within the AI agent landscape, earning permission to go deep before the technical content begins
