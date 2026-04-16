@@ -112,6 +112,41 @@ Varje steg automatiserade det tråkiga och lät utvecklaren fokusera på det som
 
 ---
 
+## Vad är ett AI agent framework?
+
+```
+  ┌──────────────────────────────────────┐
+  │           AGENT FRAMEWORK            │
+  │                                      │
+  │  LLM            Instruktioner        │
+  │  (hjärnan)      (hur den jobbar)     │
+  │                                      │
+  │  Verktyg        Minne                │
+  │  (vad den kan)  (vad den kommer      │
+  │                  ihåg)               │
+  └──────────────────────────────────────┘
+```
+
+Utan framework: ChatGPT med copy-paste.
+Med framework: **strukturerad assistent som minns.**
+
+---
+
+## Två filosofier
+
+| | GSD | BMAD |
+|---|---|---|
+| **Approach** | Workflow-centric | Persona-based |
+| **Agents** | Researcher, Planner, Executor, Verifier | PM, Architect, Developer, QA |
+| **Styrka** | Execution + verification | Strategi + dokumentation |
+
+Olika problem, olika verktyg.
+Vi valde GSD — **execution med kvalitetskontroll.**
+
+> Låt oss se hur GSD fungerar i praktiken.
+
+---
+
 <!-- _class: divider -->
 <!-- _paginate: skip -->
 
